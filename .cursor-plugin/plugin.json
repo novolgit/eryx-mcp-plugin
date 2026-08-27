@@ -1,0 +1,13 @@
+{
+  "name": "eryx",
+  "displayName": "Eryx",
+  "version": "1.0.0",
+  "description": "Find, qualify, and review B2B leads from an authorized Eryx workspace through a remote MCP server.",
+  "author": {
+    "name": "Eryx",
+    "email": "business@eryx.digital"
+  },
+  "license": "MIT",
+  "keywords": ["eryx", "b2b", "leads", "sales", "marketing", "mcp"],
+  "logo": "assets/logo.png"
+}

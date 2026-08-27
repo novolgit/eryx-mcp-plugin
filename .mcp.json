@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "eryx": {
+      "type": "http",
+      "url": "https://eryx-mcp.groundforr.workers.dev/mcp"
+    }
+  }
+}
