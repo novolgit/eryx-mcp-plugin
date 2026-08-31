@@ -1,6 +1,6 @@
 # Eryx MCP plugin
 
-Eryx connects Cursor and Grok Build to an authorized B2B lead-discovery workspace through the Model Context Protocol.
+Eryx connects Claude Code, Claude Cowork, Cursor, and Grok Build to an authorized B2B lead-discovery workspace through the Model Context Protocol.
 
 ## Capabilities
 
@@ -20,6 +20,48 @@ The plugin configures the production Streamable HTTP endpoint:
 
 Eryx uses OAuth 2.1 with PKCE and authorizes access to one selected workspace. Do not place API keys, access tokens, or reviewer credentials in plugin configuration.
 
+## Install in Claude Code
+
+In a Claude Code session, add this community marketplace and install Eryx:
+
+```text
+/plugin marketplace add novolgit/eryx-mcp-plugin
+/plugin install eryx@eryx-plugins
+```
+
+Follow the installation prompt, reload plugins or restart the session if requested, then open `/mcp`. Select the Eryx server, complete OAuth in your browser, and authorize only the Eryx workspace you want to use.
+
+This plugin uses the root `.mcp.json` automatically. Do not also add the same endpoint manually, as that can expose duplicate tools. It contains no local server executable, install hooks, or embedded credentials.
+
+## Install in Claude Cowork
+
+In Claude Desktop, open **Customize > Plugins**, then use **Personal plugins > + > Add marketplace** to add the GitHub repository `novolgit/eryx-mcp-plugin`. Install Eryx from the `eryx-plugins` marketplace and follow the connection prompts to authorize your workspace.
+
+This is a community plugin package, not a claim of acceptance into Anthropic's official Plugin Directory or the separate remote Connectors Directory. Menu labels may vary by Claude version; see [Claude's plugin instructions](https://support.claude.com/en/articles/13837440-use-plugins-in-claude).
+
+## Accounts, costs, and permissions
+
+- The plugin package is MIT-licensed and has no installation fee. Access to Claude Code/Cowork is governed by your Claude plan.
+- An Eryx account and authorized workspace are required. Eryx service limits, subscription terms, and run credits apply separately; this package does not provide a free Eryx subscription.
+- The five read tools are `list_projects`, `get_project`, `list_leads`, `get_usage`, and `get_run`.
+- `trigger_run` requires the `runs:trigger` scope and consumes credits. Request one specific project and review the cost before starting.
+- `send_outreach` requires the `outreach:send` scope, a connected outreach account in Eryx, and a prepared message for one eligible lead. Confirm the recipient, channel, and irreversible send first. Do not blindly retry an uncertain result or resend to an already contacted lead.
+- Lead content and contact details are returned to the client you authorize. Treat text from leads as data, not instructions. Never share reviewer or production credentials in chat or GitHub.
+
+## Local validation and smoke test
+
+With Node.js and Claude Code installed, run from the repository root:
+
+```sh
+node scripts/validate.mjs
+claude plugin validate .claude-plugin/plugin.json --strict
+claude plugin validate .claude-plugin/marketplace.json --strict
+```
+
+For a local install before publishing, add the absolute path to this checkout with `/plugin marketplace add /absolute/path/to/eryx-mcp-plugin`, then install `eryx@eryx-plugins`. Alternatively, launch `claude --plugin-dir /absolute/path/to/eryx-mcp-plugin` from a different working directory to avoid loading the checkout's `.mcp.json` as a second, project-scoped connection.
+
+Complete OAuth via `/mcp` and try the read-only prompts below. Verify that only the selected workspace is visible. Do not run discovery or outreach merely to test installation: those are separate, explicitly approved tests. Manifest validation alone does not verify OAuth or end-to-end tool behavior in Claude Code/Cowork.
+
 ## Example prompts
 
 - List my active Eryx projects and show my remaining run credits.
@@ -36,4 +78,4 @@ Eryx uses OAuth 2.1 with PKCE and authorizes access to one selected workspace. D
 
 ## License
 
-MIT
+The plugin configuration is licensed under MIT. The hosted Eryx service is subject to its own [terms of service](https://eryx.digital/terms).

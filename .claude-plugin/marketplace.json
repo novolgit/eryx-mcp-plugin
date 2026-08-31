@@ -1,0 +1,17 @@
+{
+  "name": "eryx-plugins",
+  "description": "Eryx plugins for authorized B2B lead discovery, review, and outreach workflows.",
+  "owner": {
+    "name": "Eryx",
+    "email": "business@eryx.digital"
+  },
+  "plugins": [
+    {
+      "name": "eryx",
+      "source": "./",
+      "description": "Find, qualify, and review B2B leads from an authorized Eryx workspace through a remote MCP server.",
+      "category": "productivity",
+      "tags": ["b2b", "leads", "sales", "marketing", "mcp"]
+    }
+  ]
+}
