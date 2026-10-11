@@ -79,3 +79,17 @@ Complete OAuth via `/mcp` and try the read-only prompts below. Verify that only 
 ## License
 
 The plugin configuration is licensed under MIT. The hosted Eryx service is subject to its own [terms of service](https://eryx.digital/terms).
+
+## Gemini CLI
+
+```sh
+gemini extensions install https://github.com/novolgit/eryx-mcp-plugin
+```
+
+Restart Gemini CLI, open `/mcp`, and use `/mcp auth` to authorize your selected workspace. The manifest uses Streamable HTTP and OAuth discovery without embedded credentials. Eryx supports Client ID Metadata Documents rather than dynamic registration, so the Gemini manifest names the public `oauth/gemini-client.json` document and uses the loopback callback `http://localhost:18765/oauth/callback`. That port must be available. The metadata URL must be reachable on the published main branch before OAuth can succeed. Discovery runs consume credits; outreach and project creation require explicit user requests and confirmation.
+
+The repository is prepared for the Gemini CLI gallery. Gallery indexing and authenticated runtime verification are separate from source publication.
+
+## Perplexity custom connector
+
+In Account settings > Connectors, choose + Custom connector > Remote. Use the HTTPS endpoint documented above, OAuth authentication and Streamable HTTP. Complete the normal consent flow for the workspace you intend to share. Perplexity plan and admin restrictions may apply. This manual configuration is separate from a public Connector Marketplace listing.

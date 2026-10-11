@@ -1,0 +1,16 @@
+{
+  "name": "eryx",
+  "version": "1.1.0",
+  "description": "Review Eryx projects, ranked B2B leads, discovery runs and usage through OAuth MCP.",
+  "mcpServers": {
+    "eryx": {
+      "httpUrl": "https://eryx-mcp.groundforr.workers.dev/mcp",
+      "oauth": {
+        "enabled": true,
+        "clientId": "https://raw.githubusercontent.com/novolgit/eryx-mcp-plugin/main/oauth/gemini-client.json",
+        "redirectUri": "http://localhost:18765/oauth/callback"
+      }
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}
