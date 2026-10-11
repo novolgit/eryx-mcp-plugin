@@ -1,0 +1,17 @@
+[[rule]]
+mcpName = "eryx"
+toolName = "trigger_run"
+decision = "ask_user"
+priority = 100
+
+[[rule]]
+mcpName = "eryx"
+toolName = "send_outreach"
+decision = "ask_user"
+priority = 100
+
+[[rule]]
+mcpName = "eryx"
+toolName = "create_project"
+decision = "ask_user"
+priority = 100
